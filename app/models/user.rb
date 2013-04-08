@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
                        :country => params[:region], 
                        :language => params[:language],
                        :overall_score => 0,
-                       :overall_ranking => User.last[:id] + 1,
+                       :overall_ranking => (User.last.nil? ? 0 : User.last[:id]) + 1,
                        :ranking_since => Time.now(),
                        :android_or_iphone => 0,
                        :password => params[:password]

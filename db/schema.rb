@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130407043842) do
 
-  create_table "followers", :force => true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "followers", ["user_id"], :name => "index_followers_on_user_id"
-
   create_table "friends", :force => true do |t|
     t.integer  "friend_id"
     t.integer  "user_id"
@@ -65,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20130407043842) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "hashed_password"
-    t.string   "profile_photo"
+    t.text     "profile_photo"
     t.string   "wishlist"
     t.boolean  "android_or_iphone"
     t.string   "country"
