@@ -1,0 +1,76 @@
+<div id="gameVisual">
+    <div class="slide">
+        <div class="wrap">
+        <h1>All Games Top 3</h1>
+        <div class="content" id="slideContent">
+            <img src="/assets/slide01.png">
+            <img src="/assets/slide01.png">
+        </div>
+        </div>
+    </div>
+    <div class="search">
+        <div>
+        <div class="searchBox">
+            <div class="input_search">
+                <input type="text" placeholder="Search Games"><button class="searchBtn btn black"><i class="icon-search"></i></button>
+            </div>
+        </div>
+        <div class="buttonArea">
+            <ul>
+                <li><a href="" class="btn black"><i class="icon-mobile"></i>Games</a></li>
+                <li><a href="" class="btn black"><i class="icon-man"></i>Players</a></li>
+                <li><a href="" class="btn black"><i class="icon-topman"></i>TOP 99</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $('#slideContent').slidesjs({
+        navigation:{active: false},
+        width: 548,
+        height: 220
+      });
+    });
+</script>
+
+<div id="main">
+    <!-- .gameBoxes -->
+    <div class="gameBoxes">
+      <% 2.times do |row| %>
+        <% @all_games[row*4..row*4+3].each do |game|%>
+        <!-- .gameBox -->
+        <div class="gameBox">
+            <!-- .titleArea -->
+            <div class="titleArea">
+                <img src="/assets/gray32.png" alt="" />
+                <div class="title"><%= game[:title] %></div>
+                <div class="genre"><%= game[:category] %></div>
+                <%= show_difficulty(game[:difficulty]) %>
+            </div>
+            <!-- /.titleArea -->
+            <div class="titleLogo"><img src="/assets/title210.png" alt="" /></div>
+            <div class="description"><p><%= game[:description] %></p></div>
+            <div class="gameScore">
+                <div class="top">
+                  <%= show_rank(game) %>
+                  <div class="r"><i class="icon-man_s"></i><span><%= game[:players] %></span></div>
+                  <div class="clear"></div>
+                </div>
+                <div class="bottom">
+                  <%= show_score(game) %>
+                  <div class="r"><i class="icon-man_s_plus"></i><span><%= friends_playing_game(game) %></span></div>
+                </div>
+                <% if @other_games.include? game %>
+                  <a href="" class="btn black download"><i class="icon-mobile_s"></i>Download</a>
+                <% end %>
+            </div>
+        </div>
+        <!-- /.gameBox -->
+        <% end %>
+      <% end %>
+    </div>
+    <!-- /.gameBoxes -->
+</div>

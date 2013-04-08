@@ -1,0 +1,268 @@
+.playerBox{
+    @include border-radius(5px);
+    overflow: hidden;
+    width:210px;
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    @include breakpoint(sp){
+        width:100%;
+        float: none;
+        margin:0 0 10px;
+    }
+    .head{
+        background-color: #3CB6A5;
+        padding:5px;
+        @include clearfix();
+        position: relative;
+        img{
+            float: left;
+            width: 44px;
+            height: 44px;
+            @include border-radius(2px);
+        }
+        .name{
+            margin-left:50px;
+            padding-right: 20px;
+            height:15px;
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            color: #fff;
+            border-bottom: 1px solid #85C5BC;
+            @include ellipsis(no-wrap);
+        }
+        .pts{
+            margin-left:50px;
+            height: 19px;
+            line-height: 19px;
+            font-size: fs(16px);
+            i{
+                margin-right: 5px;
+            }
+            span{
+                color: #ffffff;
+            }
+        }
+        .ranking{
+            text-align: right;
+            color: #ffffff;
+            font-size: fs(18px);
+            i{
+                margin-top: 4px;
+            }
+        }
+        .ranking-badge{
+            position: absolute;
+            display: block;
+            right:-10px;
+            top:-15px;
+        }
+    }
+    .score{
+        padding: 5px 2px;
+        background-color: #FBFBFB;
+        font-size: fs(18px);
+        ul{
+            text-align: center;
+            @include clearfix();
+            li{
+                display: block;
+                float: left;
+                text-align: center;
+                padding:0 2px;
+                @include box-sizing(border-box);
+                width: 33.3%;
+                div{
+                    background-color: #F1F1F2;
+                    @include border-radius(3px);
+                    padding:5px;
+                    i{
+                        display: block;
+                        margin:0 auto 5px;
+                    }
+                    span{
+                        display: block;
+                        margin:0 auto;
+                        @include ellipsis(no-wrap);
+                        color: #D74800;
+                        font-size: fs(12px);
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    .foot{
+        background-color: #F1F1F2;
+        padding: 5px;
+        .country{
+            padding-right:30px;
+            font-size: fs(11px);
+        }
+        .device{
+            .icon-apple{
+                float:right;
+            }
+        }
+    }
+}
+#playerVisual{
+    .rank{
+        background-color: #303945;
+        &>div{
+            width: 740px;
+            margin: 0 auto;
+            padding: 10px 0;
+            @include breakpoint(sp){
+                width:95%;
+                padding: 5px 0;
+            }
+            h1{
+                background-color:  #38B7A5;
+                height: 22px;
+                line-height: 22px;
+                color: #fff;
+                margin-right: 7px;
+                padding:0 10px;
+                margin-bottom: 5px;
+                position: relative;
+                @include border-radius(5px 0 0 0);
+                &::before{
+                    content: '';
+                    position: absolute;
+                    display: block;
+                    @include retina-sprite(visual_h1_r);
+                    right:-7px;
+                    top:0;
+                }
+                &::after{
+                    content: '';
+                    position: relative;
+                    display: block;
+                    @include retina-sprite(visual_h1_b);
+                    left:-10px;
+                }
+            }
+            .content{
+                @include clearfix();
+                width:750px;
+                margin-left: -10px;
+                margin-top: 10px;
+                @include breakpoint(sp){
+                    width:100%;
+                    margin: 10px 0 0;
+                }
+                .playerBox{
+                    width:240px;
+                    @include breakpoint(sp){
+                        width: 100%;
+                    }
+                    .head{
+                        .name{
+                            padding-right: 45px;
+                        }
+                    }
+                    .score{
+                        ul{
+                            li{
+                                width:23%;
+                                &:last-child{
+                                    width:31%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .search{
+        background-color: #38B7A5;
+        overflow: hidden;
+        &>div{
+            width:580px;
+            margin: 0 auto;
+            @include breakpoint(sp){
+                    width:100%;
+            }
+            .searchBox{
+                width: 260px;
+                white-space: nowrap;
+                font-size: 0;
+                float: right;
+                padding: 10px 0;
+                @include breakpoint(sp){
+                    width:90%;
+                    margin: 0 auto;
+                    float: none;
+                }
+                
+                .input_search{
+                    input[type="text"]{
+                        display: inline-block;
+                        width:85%;
+                        @include border-radius(3px 0 0 3px);
+                        height: 32px;
+                        font-size: 12px;
+                    }
+                    .searchBtn{
+                        display: inline-block;
+                        @include border-radius(0 3px 3px 0);
+                        margin: 0;
+                        font-size: 12px;
+                        padding:2px 5px;
+                        width: 15%;
+                    }
+                }
+            }
+            .buttonArea{
+                padding:10px 0;
+                float:left;
+                width:250px;
+                @include breakpoint(sp){
+                    float: none;
+                    width: 100%;
+                }
+                ul{
+                    width:250px;
+                    margin:0 auto;
+                    overflow: hidden;
+                    @include breakpoint(sp){
+                        width: 90%;
+                    }
+                    li{
+                        display: block;
+                        float: left;
+                        width: 32%;
+                        margin-left:2%;
+                        &:first-child{
+                            margin-left: 0;
+                        }
+                        a{
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.playBoxes{
+        width:210px * 4 + 10px * 4;
+        margin-left:-10px;
+        margin-top:10px;
+        @include clearfix();
+        @include breakpoint(sp){
+            width:100%;
+            margin: 10px auto;
+        }
+        .playBox{
+            @include breakpoint(sp){
+                width: 50%;
+                float: left;
+                padding: 1%;
+                @include box-sizing(border-box);
+            }
+        }
+        
+}

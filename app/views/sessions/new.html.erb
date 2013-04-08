@@ -1,0 +1,44 @@
+
+<div id="main">
+    <div id="loginArea">
+        <h1>Log in</h1>
+        <div class="formBox">
+            <div class="inputArea">
+              <%= form_tag create_session_path do %>
+                <p>
+                  <%= text_field_tag :username, params[:username], :placeholder => 'Nickname or Email' %>
+                </p>
+                <p>
+                  <%= password_field_tag :password, nil, :placeholder => 'Password' %>
+                </p>
+                  <% if @error_msg %>
+                    <div class="error_messages">
+                      <ul>
+                          <li><%= @error_msg %></li>
+                      </ul>
+                    </div>
+                  <% end %>
+                <div class="submitArea">
+                  <p class="button"><%= submit_tag "Log in" %></p>
+                  <div><a href="">Forgot your password? ></a></div>
+                </div>
+              <% end %>
+            </div>
+        </div>
+        <div class="snsLogin">
+            <h2>Or log in with your SNS account</h2>
+            <div class="box">
+                <ul>
+                    <li><a href="" class="btn black facebook">facebook</a></li>
+                    <li><a href="" class="btn black twitter">twtter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="no-account">
+            <h2>You dont have an account?</h2>
+            <div class="box">
+            Sign up:Please download one of zilup’s game to sign up!
+            </div>
+        </div>
+    </div>
+</div>

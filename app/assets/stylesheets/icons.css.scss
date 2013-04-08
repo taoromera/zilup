@@ -1,0 +1,149 @@
+$sprites: sprite-map("icons/*.png");
+
+$sprites2x: sprite-map("icons2x/*.png");
+
+@mixin sprite-background($name,$dimension:true){
+  background-repeat: no-repeat;
+  display: inline-block;
+  background-image: sprite-url($sprites);
+  background-position: sprite-position($sprites, $name);
+  @if $dimension{
+    height: image-height(sprite-file($sprites, $name));
+    width: image-width(sprite-file($sprites, $name));
+  }
+  /*
+  retina対応
+  @media (-webkit-min-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5){
+  
+    background-image: sprite-url($sprites2x);
+    background-position: 0 round(nth(sprite-position($sprites2x, $name), 2) / 2);
+    @if $dimension{
+      height: round(image-height(sprite-file($sprites2x, $name)) / 2);
+      width: round(image-width(sprite-file($sprites2x, $name)) /2 );
+    }
+  }
+  */
+}
+
+@import "retina-sprites";
+
+[class^="icon-"],[class*=" icon-"]{
+    display: inline-block;
+    vertical-align: text-top;
+}
+
+.icon-mobile{
+    @include retina-sprite(mobile);
+    margin-right: 5px;
+    margin-top: -5px;
+}
+
+.icon-man{
+    @include retina-sprite(man);
+    margin-right: 5px;
+    margin-top: -5px;
+    
+}
+
+.icon-topman{
+    @include retina-sprite(topman);
+    margin-right: 5px;
+    margin-top: -5px;
+}
+
+.icon-mobile_s{
+    @include retina-sprite(mobile_s);
+}
+.icon-bell{
+    @include retina-sprite(bell);
+}
+.icon-setting{
+    @include retina-sprite(setting);
+}
+.icon-check{
+    @include retina-sprite(check);
+    margin-right: 10px;
+    margin-top: -5px;
+}
+.icon-search{
+    @include retina-sprite(search);
+    margin-top: -5px;
+}
+.icon-man_s{
+    @include retina-sprite(man_s);
+}
+
+.icon-man_s_plus{
+    @include retina-sprite(man_s_plus);
+}
+.icon-down{
+    @include retina-sprite(down);
+}
+
+.icon-people{
+    @include retina-sprite(people);
+}
+
+.icon-crown{
+    @include retina-sprite(crown);
+}
+
+.icon-mobile_2{
+    @include retina-sprite(mobile_2);
+}
+.icon-hour{
+    @include retina-sprite(hour);
+}
+
+.icon-japan{
+    @include retina-sprite(japan);
+}
+
+.icon-apple{
+    @include retina-sprite(apple);
+}
+.icon-num_01{
+    @include retina-sprite(num_01);
+}
+.icon-num_02{
+    @include retina-sprite(num_02);
+}
+.icon-num_03{
+    @include retina-sprite(num_03);
+}
+
+.icon-add{
+    @include retina-sprite(add);
+    
+}
+.icon-up{
+    @include retina-sprite(up);
+}
+
+.icon-mypage_mobile{
+    @include retina-sprite(mypage_mobile);
+}
+.icon-mypage_people{
+    @include retina-sprite(mypage_people);
+}
+.icon-mypage_king{
+    @include retina-sprite(mypage_king);
+}
+
+.icon-detail_people{
+    @include retina-sprite(detail_people);
+}
+.icon-detail_plus{
+    @include retina-sprite(detail_plus);
+}
+
+.icon-detail_mobile{
+    @include retina-sprite(detail_mobile);
+    margin-right: 5px;
+    margin-top: -5px;
+}
+.icon-detail_standby{
+    @include retina-sprite(detail_standby);
+    margin-right: 5px;
+    margin-top: -5px;
+}

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from: MyString
+  sent_date: 2013-03-21 23:27:53
+  mssg_content: MyText
+
+two:
+  from: MyString
+  sent_date: 2013-03-21 23:27:53
+  mssg_content: MyText

@@ -1,0 +1,12 @@
+@function fs($size){
+		@return ($size/$base_font_size)*100%
+}
+
+/*-----------------------------------------------
+  http://css-tricks.com/media-queries-sass-3-2-and-codekit/
+-----------------------------------------------*/
+@mixin breakpoint($point) {
+  @if $point == sp {
+    @media (max-width: 768px) { @content; }
+  }
+}

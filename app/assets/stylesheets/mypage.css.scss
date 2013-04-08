@@ -1,0 +1,154 @@
+#mypageVisual{
+    background-color: #303945;
+    .wrap{
+        width:860px;
+        margin:0 auto;
+        @include clearfix();
+        @include breakpoint(sp){
+            width:100%;
+        }
+        .person{
+            margin:20px 0;
+            position: relative;
+            width:280px;
+            float: left;
+            @include breakpoint(sp){
+                float: none;
+                width:90%;
+                margin:20px auto;
+            }
+            .data{
+                padding-right: 50px;
+                img{
+                    margin-top:-5px;
+                    float: left;
+                }
+                .a{
+                    height: 45px;
+                    .b{
+                        margin-bottom: 1px;
+                        background-color: #242B34;
+                        padding-left: 10px;
+                        height: 22px;
+                        line-height: 22px;
+                        @include border-radius(3px);
+                        color: #fff;                        
+                        @include ellipsis(no-wrap);
+                        @include box-sizing(border-box);
+                        position: relative;
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+                        .device{
+                            i{
+                                float: right;
+                                margin: 3px 6px 0 0;
+                            }
+                        }
+                        .country{
+                            padding-right: 30px;
+                            font-size: fs(11px);
+                        }
+                    }
+                }
+            }
+            .add{
+                display: block;
+                position: absolute;
+                right:0;
+                top:0;
+                height: 45px;
+                width: 45px;
+                padding: 0;
+                line-height: auto;
+                span{
+                    display: block;
+                    height: 12px;
+                    line-height: 12px;
+                }
+            }
+        }
+        .score{
+            float: right;
+            color: #fff;
+            width:200px;
+            margin: 10px 0;
+            @include breakpoint(sp){
+                padding:10px 0;
+                float: none;
+                width: 100%;
+                background-color: #272F39;
+            }
+            span{
+                display: inline-block;
+            }
+            .rank{
+                font-size: fs(30px);
+                border-bottom: 1px solid #335359;
+                padding-bottom: 5px;
+                text-align: right;
+                height: 30px;
+                line-height: 30px;
+                width:200px;
+                margin: 0 auto;
+                i{
+                    margin:2px 0 0 5px;
+                    vertical-align: top;
+                }
+            }
+            .pts{
+                padding-left:40px;
+                position: relative;
+                text-align: right;
+                height: 30px;
+                line-height: 30px;
+                margin-top: 5px;
+                font-size: fs(20px);
+                width:200px;
+                margin: 0 auto;
+                @include box-sizing(border-box);
+                .next{
+                    position: absolute;
+                    left:0;
+                    top:0;
+                    font-size: 85%;
+                }
+            }
+        }
+        .tabButtons{
+            text-align: center;
+            margin: 10px 0;
+            ul{
+                @include clearfix();
+                display: inline-block;
+                li{
+                    width:60px;
+                    margin-right: 5px;
+                    float: left;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                    .btn{
+                        width:auto;
+                        padding:0;
+                        height: 70px;
+                        display: block;
+                        color: #fff;
+                        span{
+                            display: block;
+                        }
+                        .text{
+                            height: 10px;
+                            line-height: 10px;
+                        }
+                        .num{
+                            height: 26px;
+                            line-height: 26px;
+                            font-size: fs(22px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

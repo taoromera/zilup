@@ -1,0 +1,13 @@
+$base_font_size: 14px;
+$base_font_family: 'Cabin','Raleway', sans-serif;
+/*
+$base_font_family: "ヒラギノ角ゴ Pro","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,"ＭＳ Ｐゴシック","MS P Gothic",Verdana,sans-serif;
+*/
+body{
+    font-size: $base_font_size;
+    font-family: $base_font_family;
+}
+
+@function fs($size){
+    @return ($size/$base_font_size)*100%
+}

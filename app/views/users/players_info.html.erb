@@ -1,0 +1,168 @@
+<!-- #playerVisual -->
+<div id="playerVisual">
+    <!-- .rank -->
+    <div class="rank">
+        <div>
+            <h1>All Games Top 3</h1>
+            <div class="content">
+                <!-- .playBox -->
+                <div class="playerBox">
+                    <div class="head">
+                        <img src="/assets/gray44.png" alt="" />
+                        <div class="name">
+                            <%= @first_user.username %>
+                        </div>
+                        <div class="pts"><i>pts</i><span><%= number_with_delimiter(@first_user.overall_score, :delimiter => ',') %></span></div>
+                        <i class="ranking-badge icon-num_01"></i>
+<!--
+                        <div class="ranking">
+                            #999,999 <i class="icon-down"></i>
+                        </div>
+-->
+                    </div>
+                    <div class="score">
+                        <ul>
+                            <li><div><i class="icon-people"></i><span><%= @first_user.friends.count %></span></div></li>
+                            <li><div><i class="icon-mobile_2"></i><span><%= @first_user.game_scores.count %></span></div></li>
+                            <li><div><i class="icon-crown"></i><span><%= @first_user.game_scores.where("ranking = 1").count %></span></div></li>
+                            <li><div><i class="icon-hour"></i><span><%= @current_user.ranking_since_time(@first_user[:ranking_since]) %></span></div></li>
+                        </ul>
+                    </div>
+                    <div class="foot">
+                        <div class="device"><i class="icon-apple"></i></div>
+                        <div class="country">
+                            <i class="icon-japan"></i>
+                            <%= @first_user.country %>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.playBox -->
+                <!-- .playBox -->
+                <div class="playerBox">
+                    <div class="head">
+                        <img src="/assets/gray44.png" alt="" />
+                        <div class="name">
+                            <%= @second_user.username %>
+                        </div>
+                        <div class="pts"><i>pts</i><span><%= number_with_delimiter(@second_user.overall_score, :delimiter => ',') %></span></div>
+                        <i class="ranking-badge icon-num_02"></i>
+<!--
+                        <div class="ranking">
+                            #999,999 <i class="icon-down"></i>
+                        </div>
+-->
+                    </div>
+                    <div class="score">
+                        <ul>
+                            <li><div><i class="icon-people"></i><span><%= @second_user.friends.count %></span></div></li>
+                            <li><div><i class="icon-mobile_2"></i><span><%= @second_user.game_scores.count %></span></div></li>
+                            <li><div><i class="icon-crown"></i><span><%= @second_user.game_scores.where("ranking = 1").count %></span></div></li>
+                            <li><div><i class="icon-hour"></i><span><%= @current_user.ranking_since_time(@second_user[:ranking_since]) %></span></div></li>
+                        </ul>
+                    </div>
+                    <div class="foot">
+                        <div class="device"><i class="icon-apple"></i></div>
+                        <div class="country">
+                            <i class="icon-japan"></i>
+                            <%= @second_user.country %>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.playBox -->
+                <!-- .playBox -->
+                <div class="playerBox">
+                    <div class="head">
+                        <img src="/assets/gray44.png" alt="" />
+                        <div class="name">
+                            <%= @third_user.username %>
+                        </div>
+                        <div class="pts"><i>pts</i><span><%= number_with_delimiter(@third_user.overall_score, :delimiter => ',') %></span></div>
+                        <i class="ranking-badge icon-num_03"></i>
+<!--
+                        <div class="ranking">
+                            #999,999 <i class="icon-down"></i>
+                        </div>
+-->
+                    </div>
+                    <div class="score">
+                        <ul>
+                            <li><div><i class="icon-people"></i><span><%= @third_user.friends.count %></span></div></li>
+                            <li><div><i class="icon-mobile_2"></i><span><%= @third_user.game_scores.count %></span></div></li>
+                            <li><div><i class="icon-crown"></i><span><%= @third_user.game_scores.where("ranking = 1").count %></span></div></li>
+                            <li><div><i class="icon-hour"></i><span><%= @current_user.ranking_since_time(@third_user[:ranking_since]) %></span></div></li>
+                        </ul>
+                    </div>
+                    <div class="foot">
+                        <div class="device"><i class="icon-apple"></i></div>
+                        <div class="country">
+                            <i class="icon-japan"></i>
+                            <%= @third_user.country %>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.playBox -->
+            </div>
+        </div>
+    </div>
+    <!-- /.rank -->
+    <div class="search">
+        <div>
+        <div class="searchBox">
+            <div class="input_search">
+                <input type="text" placeholder="Search Games"><button class="searchBtn btn black"><i class="icon-search"></i></button>
+            </div>
+        </div>
+        <div class="buttonArea">
+            <ul>
+                <li><a href="" class="btn black"><i class="icon-mobile"></i>Games</a></li>
+                <li><a href="" class="btn black"><i class="icon-man"></i>Players</a></li>
+                <li><a href="" class="btn black"><i class="icon-topman"></i>TOP 99</a></li>
+            </ul>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- /#playerVisual -->
+
+
+<!-- #main -->
+<div id="main">
+    <!-- .playBoxes -->
+    <div class="playBoxes">
+        <% 10.times do %>
+        <!-- .playBox -->
+        <div class="playBox">
+            <div class="playerBox">
+                <div class="head">
+                    <img src="/assets/gray44.png" alt="" />
+                    <div class="name">
+                        namenamenamename
+                    </div>
+                    <!-- <div class="pts"><i>pts</i><span>999,999</span></div> -->
+                    <div class="ranking">
+                        #999,999 <i class="icon-down"></i>
+                    </div>
+                </div>
+                <div class="score">
+                    <ul>
+                        <li><div><i class="icon-people"></i><span>99</span></div></li>
+                        <li><div><i class="icon-mobile_2"></i><span>99</span></div></li>
+                        <li><div><i class="icon-crown"></i><span>99</span></div></li>
+                    </ul>
+                </div>
+                <div class="foot">
+                    <div class="device"><i class="icon-apple"></i></div>
+                    <div class="country">
+                        <i class="icon-japan"></i>
+                        Japan
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.playBox -->
+        <%end%>
+    </div>
+    <!-- /.playBoxes -->
+</div>
+<!-- /#main -->
+

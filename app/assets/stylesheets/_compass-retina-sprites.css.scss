@@ -1,0 +1,24 @@
+/*
+    https://gist.github.com/haribote/4072251
+*/
+
+@mixin all-retina-sprites($map, $dimensions: false){
+  $base-class: sprite-map-name($map);
+
+  .#{$base-class}-retina-sprite{
+    background: sprite-url($map) no-repeat;
+    @include background-size(ceil(image-width(sprite-path($map)) / 2) auto);
+  }
+
+  @each $sprite in sprite-names($map){
+    .#{$base-class}-#{$sprite}{
+      @extend .#{$base-class}-retina-sprite;
+      @if $dimensions{
+        width: ceil(image-width(sprite-file($map, $sprite)) / 2);
+        height: ceil(image-height(sprite-file($map, $sprite)) / 2);
+      }
+      $pos: sprite-position($map, $sprite);
+      background-position: ceil(nth($pos, 1) / 2) ceil(nth($pos, 2) / 2);
+    }
+  }
+}

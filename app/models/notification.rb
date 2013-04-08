@@ -1,0 +1,5 @@
+class Notification < ActiveRecord::Base
+  attr_accessible :from, :mssg_content, :sent_date, :user_id
+  belongs_to :user
+  
+end

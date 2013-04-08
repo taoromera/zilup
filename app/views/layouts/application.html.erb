@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>ZilupCoding</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  
+  <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <!--[if lte IE 8]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<header id="header">
+    <div>
+    <div class="titleArea">
+        <a href=""><img src="/assets/title.png"></a>
+    </div>
+    <div class="buttonArea">
+        <ul>
+            <li><a href="games" class="btn black"><i class="icon-mobile"></i>Games</a></li>
+            <li><a href="players" class="btn black"><i class="icon-man"></i>Players</a></li>
+            <li><a href="" class="btn black"><i class="icon-topman"></i>TOP 99</a></li>
+        </ul>
+    </div>
+    <!--
+    <div class="buttonArea loginButtonArea">
+        <ul>
+            <li><a href="" class="btn black signup">sign up</a></li>
+            <li><a href="" class="btn black login"><i class="icon-mobile_s"></i>Log in</a></li>
+        </ul>
+    </div>
+    -->
+    <div class="userArea">
+        <div>
+            <div class="buttons">
+                <ul>
+                    <li><a href="" class="number"><i class="icon-mobile_s"></i><span><%= @current_user[:wishlist].split(',').count %></span></a></li>
+                    <li><a href="" class="number"><i class="icon-bell"></i><span><%= @current_user.notifications.count %></span></a></li>
+                    <li><a href=""><i class="icon-setting"></i></a></li>
+                </ul>
+            </div>
+
+            <a href="my_page?view=games" class="userName">
+                <img src="/assets/face.png" width="32" height="32">
+                <span><%= @current_user[:username] %></span>
+            </a>
+        </div>
+    </div>
+    
+    </div>
+</header>
+
+<%= yield %>
+
+<footer id="footer">
+    <img src="/assets/zilup_logo.png">
+    <p>zilup (c) 2013 </p>
+</footer>
+
+</body>
+</html>

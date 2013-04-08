@@ -1,0 +1,364 @@
+#gameVisual{
+    .slide{
+        background-color: #303945;
+        .wrap{
+        width: 552px;
+        margin: 0 auto;
+        padding: 10px 0;
+        @include breakpoint(sp){
+            width:95%;
+        }
+        h1{
+            background-color:  #38B7A5;
+            height: 22px;
+            line-height: 22px;
+            color: #fff;
+            margin-right: 7px;
+            padding:0 10px;
+            margin-bottom: 5px;
+            position: relative;
+            @include border-radius(5px 0 0 0);
+            &::before{
+                content: '';
+                position: absolute;
+                display: block;
+                @include retina-sprite(visual_h1_r);
+                right:-7px;
+                top:0;
+            }
+            &::after{
+                content: '';
+                position: relative;
+                display: block;
+                @include retina-sprite(visual_h1_b);
+                left:-10px;
+            }
+        }
+        .content{
+            margin-left: 4px;
+            img{
+                width: 100%;
+            }
+        }
+        }
+    }
+    .search{
+        background-color: #38B7A5;
+        overflow: hidden;
+        &>div{
+            width:580px;
+            margin: 0 auto;
+            @include breakpoint(sp){
+                    width:100%;
+            }
+            .searchBox{
+                width: 260px;
+                white-space: nowrap;
+                font-size: 0;
+                float: right;
+                padding: 10px 0;
+                @include breakpoint(sp){
+                    width:90%;
+                    margin: 0 auto;
+                    float: none;
+                }
+                
+                .input_search{
+                    input[type="text"]{
+                        display: inline-block;
+                        width:85%;
+                        @include border-radius(3px 0 0 3px);
+                        height: 32px;
+                        font-size: 12px;
+                    }
+                    .searchBtn{
+                        display: inline-block;
+                        @include border-radius(0 3px 3px 0);
+                        margin: 0;
+                        font-size: 12px;
+                        padding:2px 5px;
+                        width: 15%;
+                    }
+                }
+            }
+            .buttonArea{
+                padding:10px 0;
+                float:left;
+                width:250px;
+                @include breakpoint(sp){
+                    float: none;
+                    width: 100%;
+                }
+                ul{
+                    width:250px;
+                    margin:0 auto;
+                    overflow: hidden;
+                    @include breakpoint(sp){
+                        width: 90%;
+                    }
+                    li{
+                        display: block;
+                        float: left;
+                        width: 32%;
+                        margin-left:2%;
+                        &:first-child{
+                            margin-left: 0;
+                        }
+                        a{
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#main{
+    .gameBoxes{
+        width:210px * 4 + 10px * 4;
+        margin-left:-10px;
+        margin-top:10px;
+        @include clearfix();
+        @include breakpoint(sp){
+            width:90%;
+            margin: 10px auto;
+        }
+        .gameBox{
+            width:210px;
+            float: left;
+            background-color: #ffffff;
+            overflow: hidden;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            @include border-radius(5px);
+            @include breakpoint(sp){
+                width:100%;
+                float: none;
+                margin:0 0 10px;
+            }
+            .titleArea{
+                padding:5px;
+                position: relative;
+                img{
+                    float: left;
+                    width:32px;
+                    height: 32px;
+                    @include border-radius(3px);
+                }
+                .title{
+                    margin-left: 40px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    line-height: 18px;
+                }
+                .genre{
+                    margin-left: 40px;
+                    margin-right: 50px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    color: #9A9A8C;
+                    line-height: 14px;
+                    font-size: fs(12px);
+                }
+            }
+            .titleLogo{
+                img{
+                    width:100%;
+                }
+            }
+            .description{
+                padding:5px 10px;
+                p{
+                    font-size: fs(12px);
+                    line-height: 15px;
+                    height: 45px;
+                    overflow: hidden;                    
+                }
+            }
+            .gameScore{
+                background-color: #3CB6A5;
+                padding:5px;
+                line-height: 20px;
+                position: relative;
+                font-size: fs(18px);
+                .top{
+                    border-bottom: 1px solid #85C5BC;
+                    margin-bottom: 3px;
+                    padding-bottom: 3px;
+                    position: relative;
+                    .l{
+                        float: left;
+                        width:48%;
+                        @include clearfix();
+                        i{
+                            float: left;
+                            display: block;
+                            font-size: 11px;
+                        }
+                        span{
+                            display: block;
+                            margin-left: 15px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            color: #fff;
+                        }
+                    }
+                    .r{
+                        float: right;
+                        width:48%;
+                        @include clearfix();
+                        i{
+                            float: right;
+                            display: block;
+                            margin-top: 3px;
+                        }
+                        span{
+                            display: block;
+                            margin-right: 15px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            font-size: fs(13px);
+                            color: #fff;
+                            text-align: right;
+                        }
+                    }
+                    .ribon{
+                        position: absolute;
+                        top:-5px;
+                        left:-5px;
+                        background-color: #D75400;
+                        height: 28px;
+                        width: 40px;
+                        color:#fff;
+                        @include border-radius(0 0 0 3px);
+                        line-height: 30px;
+                        font-size:fs(15px);
+                        padding-left:13px;
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            display: block;
+                            @include retina-sprite(game_s_r);
+                            right:-7px;
+                            top:0;
+                        }
+                        &::after{
+                            content: '';
+                            position: relative;
+                            display: block;
+                            @include retina-sprite(game_s_t);
+                            left:-13px;
+                            top:-34px;
+                        }
+                        &.black{
+                            background-color: #303945;
+                            &::before{
+                                @include retina-sprite(game_b_r);
+                            }
+                            
+                            &::after{
+                                @include retina-sprite(game_b_t);
+                            }
+                        }
+                    }
+                }
+                .bottom{
+                    @include clearfix();
+                    .l{
+                        float: left;
+                        width:48%;
+                        @include clearfix();
+                        i{
+                            float: left;
+                            display: block;
+                            font-size: 11px;
+                            margin-right: 4px;
+                        }
+                        span{
+                            display: block;
+                            margin-left: 15px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            color: #fff;
+                        }
+                    }
+                    .r{
+                        float: right;
+                        width:48%;
+                        @include clearfix();
+                        i{
+                            float: right;
+                            display: block;
+                            margin-top: 3px;
+                        }
+                        span{
+                            display: block;
+                            margin-right: 15px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            color: #fff;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+            a.download{
+                position: absolute;
+                display: block;
+                left:10px;
+                top:10px;
+            }
+        }
+    }
+}
+.slide .wrap{
+    position: relative;
+}
+#slideContent{
+    display: none;
+}
+.slidesjs-pagination{
+    position:absolute;
+    top:13px;
+    right:15px;
+    .slidesjs-pagination-item{
+        display: inline-block;
+        padding:0 2px;
+        a{
+            width:8px;
+            height: 8px;
+            @include border-radius(8px);
+            background-color: #ffffff;
+            text-indent: -9999px;
+            display: block;
+            &.active{
+                background-color: #303945;
+            }
+        }
+    }
+}
+span.star{
+    display: block;
+    position: absolute;
+    right:5px;
+    bottom: 6px;
+    &.star_0{
+        @include retina-sprite(star_0);
+    }
+    &.star_1{
+        @include retina-sprite(star_1);
+    }
+    &.star_2{
+        @include retina-sprite(star_2);
+    }
+    &.star_3{
+        @include retina-sprite(star_3);
+    }
+}

@@ -1,0 +1,160 @@
+<!-- #mypageVisual -->
+<div id="mypageVisual">
+    <!-- .wrap -->
+    <div class="wrap">
+        <!-- .person -->
+        <div class="person">
+            <!-- .data -->
+            <div class="data">
+                <img src="/assets/face_sample.png" alt="" />
+                <div class="a">
+                    <div class="b">
+                        <%= @current_user.username %>
+                    </div>
+                    <div class="b">
+                        <div class="device"><i class="icon-apple"></i></div>
+                        <div class="country">
+                            <i class="icon-japan"></i>
+                            <%= @current_user.country %>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- /.data -->
+            <a href="" class="btn green add">
+                <i class="icon-add"></i>
+                <span>Add</span>
+            </a>
+        </div>
+        <!-- /.person -->
+        <!-- .score -->
+        <div class="score">
+            <div class="rank">
+                <span>#<%= number_with_delimiter(@current_user.overall_ranking, :delimiter => ',') %></span><i class="icon-up"></i>
+            </div>
+            <div class="pts">
+                <span><%= number_with_delimiter(@current_user.overall_score, :delimiter => ',') %> pts</span>
+                <span class="next">+<%= User.pts_to_next_ranking(@current_user) %></span>
+            </div>
+            
+        </div>
+        <!-- /.score -->
+        <!-- .tabButtons -->
+        <div class="tabButtons">
+            <ul>
+                <li>
+                    <a href="my_page?view=games" class="btn green active">
+                        <i class="icon-mypage_mobile"></i>
+                        <span class="text">Games</span>
+                        <span class="num"><%= @current_user.game_scores.count %></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="my_page?view=friends" class="btn green">
+                        <i class="icon-mypage_people"></i>
+                        <span class="text">Friends</span>
+                        <span class="num"><%= @current_user.friends.count %></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="my_page?view=king" class="btn green">
+                        <i class="icon-mypage_king"></i>
+                        <span class="text">King</span>
+                        <span class="num"><%= @current_user.game_scores.where(:ranking => 1).count %></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.tabButtons -->
+    </div>
+    <!-- /.wrap -->
+</div>
+<!-- /#mypageVisual -->
+
+<!-- #main -->
+<div id="main">
+    <!-- .gameBoxes -->
+    <% if @view == 'games' %>
+    <div class="gameBoxes">
+      <% @rows.times do |row| %>
+        <% @all_games[row*4..row*4+3].each do |game|%>
+        <!-- .gameBox -->
+        <div class="gameBox">
+            <!-- .titleArea -->
+            <div class="titleArea">
+                <img src="/assets/gray32.png" alt="" />
+                <div class="title"><%= game[:title] %></div>
+                <div class="genre"><%= game[:category] %></div>
+                <%= show_difficulty(game[:difficulty]) %>
+            </div>
+            <!-- /.titleArea -->
+            <div class="titleLogo"><img src="/assets/title210.png" alt="" /></div>
+            <div class="description"><p><%= game[:description] %></p></div>
+            <div class="gameScore">
+                <div class="top">
+                  <%= show_rank(game) %>
+                  <div class="r"><i class="icon-man_s"></i><span><%= game[:players] %></span></div>
+                  <div class="clear"></div>
+                </div>
+                <div class="bottom">
+                  <%= show_score(game) %>
+                  <div class="r"><i class="icon-man_s_plus"></i><span><%= friends_playing_game(game) %></span></div>
+                </div>
+                <% if @other_games.include? game %>
+                  <a href="" class="btn black download"><i class="icon-mobile_s"></i>Download</a>
+                <% end %>
+            </div>
+        </div>
+        <!-- /.gameBox -->
+        <% end %>
+      <% end %>
+    </div>
+    <%end%>
+    <!-- /.gameBoxes -->
+    
+    
+    <!-- .playBoxes -->
+    <% if @view == 'friends' %>
+    <div class="playBoxes">
+      <% @rows_friends.times do |row| %>
+        <% @my_friends[row*4..row*4+3].each do |user|%>
+        <!-- .playBox -->
+        <div class="playBox">
+            <div class="playerBox">
+                <div class="head">
+                    <img src="/assets/gray44.png" alt="" />
+                    <div class="name">
+                        <%= user.username %>
+                    </div>
+                    <!-- <div class="pts"><i>pts</i><span>999,999</span></div> -->
+                    <div class="ranking">
+                        #999,999 <i class="icon-down"></i>
+                    </div>
+                </div>
+                <div class="score">
+                    <ul>
+                        <li><div><i class="icon-people"></i><span>99</span></div></li>
+                        <li><div><i class="icon-mobile_2"></i><span>99</span></div></li>
+                        <li><div><i class="icon-crown"></i><span>99</span></div></li>
+                    </ul>
+                </div>
+                <div class="foot">
+                    <div class="device"><i class="icon-apple"></i></div>
+                    <div class="country">
+                        <i class="icon-japan"></i>
+                        Japan
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.playBox -->
+        <%end%>
+      <%end%>
+    </div>
+    <%end%>
+    <!-- /.playBoxes -->
+    
+</div>
+
+<!-- /#main -->

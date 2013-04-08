@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game_id: 1
+  max_score: 1
+  ranking: 1
+  user: 
+
+two:
+  game_id: 1
+  max_score: 1
+  ranking: 1
+  user: 

@@ -1,0 +1,138 @@
+// Place all the styles related to the a controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#loginArea{
+    margin:80px auto;
+    width:380px;
+    @include breakpoint(sp){
+        width:90%;
+        margin:20px auto;
+    }
+    h1{
+        background-color: #D75400;
+        padding:0 10px;
+        line-height: 27px;
+        height: 27px;
+        margin-right:7px;
+        color: #ffffff;
+        position: relative;
+        margin-bottom: 10px;
+        &::before{
+            content: '';
+            position: absolute;
+            display: block;
+            @include retina-sprite(login_h1_r);
+            right:-7px;
+            top:0;
+        }
+        &::after{
+            content: '';
+            position: relative;
+            display: block;
+            @include retina-sprite(login_h1_b);
+            left:-10px;
+        }
+    }
+    .formBox{
+        margin-bottom: 20px;
+        .inputArea{
+            background-color: #3CB6A5;
+            padding:20px;
+            @include border-radius(5px 5px 0 0);
+            .input_nickname{
+                width:100%;
+                margin-bottom: 15px;
+                position: relative;
+                input{
+                    width:100%;
+                }
+                &::after{
+                    position: absolute;
+                    content: "";
+                    right:5px;
+                    top:5px;
+                    @include retina-sprite(input_text);
+                }
+            }
+            .input_password{
+                width:100%;
+                position: relative;
+                input{
+                    width:100%;
+                }
+                &::after{
+                    position: absolute;
+                    content: "";
+                    right:5px;
+                    top:5px;
+                    @include retina-sprite(input_pass);
+                }
+            }
+        }
+        .submitArea{
+            background-color: #303945;
+            @include border-radius(0 0 5px 5px);
+            padding:10px 20px;
+            overflow: hidden;
+            .submitBtn{
+                float: right;
+                background-color: #40B5A5;
+                width: 100px;
+            }
+            &>div{
+                margin:10px 120px 0 0;
+                line-height: 12px;
+                height: 12px;
+                a{
+                    font-size: fs(12px);
+                    color: #fff;
+                }
+            }
+        }
+    }
+    .snsLogin{
+        margin-bottom: 20px;
+        h2{
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: fs(12px);
+        }
+        .box{
+            padding:20px 10px;
+            background-color: #303945;
+            @include border-radius(5px);
+            ul{
+                overflow: hidden;
+                li{
+                    display: block;
+                    float: left;
+                    width:40%;
+                    margin: 0 5%;
+                    a{
+                        display: block;
+                        &.facebook{
+                            background-color: #265CFF;
+                        }
+                        &.twitter{
+                            background-color: #4DD2FF;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .no-account{
+        h2{
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: fs(12px);
+        }
+        .box{
+            padding:10px;
+            background-color: #303945;
+            @include border-radius(5px);
+            color: #fff;
+            font-size: fs(12px);
+        }
+    }
+}

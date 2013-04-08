@@ -1,0 +1,28 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: zilup_gc
+  pool: 5
+  wait_timeout: 10
+  username: postgres
+  reconnect: true
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: zilup_gc
+  pool: 5
+  username: postgres
+  reconnect: true
+
+#need that stuff to make the test db
+#test:
+#adapter: postgis
+#encoding: unicode
+#database: japan
+#pool: 5
+#username: postgres
+#reconnect: true
+##postgis_extension: true
+##script_dir: /usr/share/postgresql/9.1/contrib/postgis-2.1/
+#
