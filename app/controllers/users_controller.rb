@@ -58,27 +58,27 @@ class UsersController < ApplicationController
   end
   
   def get_user_info
-    begin 
+    # If user not logged, raise an error
+    res = User.user_logged?
+    if res[:status] == 1
       current_user = User.find(session[:user_id])
-    # Something went wrong. Return an empty response and an error code
-    rescue => e
-      render :json => {:username => [],
-                       :profile_photo => [], 
-                       :wishlist_nr => [], 
-                       :notification_nr => [], 
-                       :overall_ranking => [], 
-                       :overall_score => [], 
-                       :points_to_rank_up => [], 
-                       :country => [], 
-                       :status => 0,
-                       :error_msg => e.record.errors.full_messages
+    else
+      render :json => {:status => 0,
+                       :error_msg => res[:error_msg]
                        }
     end
-    
-    wishlist_nr = current_user[:wishlist].split(',').count
-    notification_nr = current_user.notifications.count
-    points_to_rank_up = current_user.pts_to_next_ranking(current_user)
+  
+    begin 
+      wishlist_nr = current_user[:wishlist].split(',').count
+      notification_nr = current_user.notifications.count
+      points_to_rank_up = current_user.pts_to_next_ranking(current_user)
+    rescue => e
+      render :json => {:status => 0,
+                       :error_msg => 'Internal server error.'
+                       }
+    end
 
+    # Everything went fine, so return the player info for the desired player
     render :json => {:username => current_user[:username], 
                      :profile_photo => current_user[:profile_photo], 
                      :wishlist_nr => wishlist_nr, 
@@ -91,5 +91,49 @@ class UsersController < ApplicationController
                      :error_msg => ''
                      }
   end
+  
+  def get_game_info
+    # If user not logged, raise an error
+    res = user_logged?
+    if res[:status] == 1
+      current_user = User.find(session[:user_id])
+    else
+      render :json => {:status => 0,
+                       :error_msg => res[:error_msg]
+                       }
+      return
+    end
+    
+    begin  
+      game_info = current_user.game_scores.where(:game_id => params[:game_id]).first
+    rescue
+      # Something went wrong. Return an empty response and an error code
+      render :json => {:status => 0,
+                       :error_msg => 'Internal error.'
+                       }
+      return
+    end
+    
+    # Everything went fine, so return the game info for the desired player and desired game
+    render :json => {:best_score_1 => game_info[:best_score_1],
+                     :best_score_2 => game_info[:best_score_2], 
+                     :best_score_3 => game_info[:best_score_3], 
+                     :ranking => game_info[:ranking], 
+                     :points_to_rank_up => game_info[:points_to_rank_up], 
+                     :status => 1,
+                     :error_msg => ''
+                     }
+  end
+  
+  private
+  
+  def user_logged?
+    if session[:user_id].nil?
+      return {:status => 0, :error_msg => 'User not logged in.'}
+    else
+      return {:status => 1, :error_msg => ''}
+    end
+  end
+
   
 end

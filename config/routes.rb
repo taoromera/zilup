@@ -13,7 +13,11 @@ Zilup::Application.routes.draw do
   match "sign_up" => "sessions#sign_up", :as => :sign_up
   match "log_in" => "sessions#log_in", :as => :log_in
   match "get_user_info" => "users#get_user_info", :as => :get_user_info
-
+  match "get_game_info" => "users#get_game_info", :as => :get_game_info
+  match "recommended_games" => "games#get_recommended_games", :as => :get_recommended_games
+  match "send_new_score" => "games#send_new_score", :as => :send_new_score
+  match "initialize_game_info" => "games#initialize_game_info", :as => :initialize_game_info
+  
 #  match "/sessions/create" => "sessions#create", :via => :post
   #resources :users
   #resources :sessions

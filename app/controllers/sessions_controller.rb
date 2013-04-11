@@ -38,21 +38,24 @@ class SessionsController < ApplicationController
   
   def sign_up
     user = User.where(:username => params[:username])
-    if user.empty?
-      begin 
-        User.new_account(params)
-        status = 1
-        error_msg = ''
-      rescue => e
-        status = 0
-        error_msg = e.record.errors.full_messages
-      end  
-    else
-      status = 0
-      error_msg = 'Username is taken. Please, choose another one.'
+    
+    # If username is taken, raise an error
+    if !user.empty?
+      render :json => {:status => 0, :error_msg => 'Username is taken. Please, choose another one.'}
     end
     
+    # If username is available, try to create the account with the provided parameters
+    begin 
+      User.new_account(params)
+      status = 1
+      error_msg = ''
+    rescue => e
+      status = 0
+      error_msg = e.record.errors.full_messages
+    end  
+        
     render :json => {:status => status, :error_msg => error_msg}
   end
+  
 
 end

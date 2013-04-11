@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407043842) do
+ActiveRecord::Schema.define(:version => 20130409085702) do
+
+  create_table "followers", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "followers", ["user_id"], :name => "index_followers_on_user_id"
 
   create_table "friends", :force => true do |t|
     t.integer  "friend_id"
@@ -24,11 +32,13 @@ ActiveRecord::Schema.define(:version => 20130407043842) do
 
   create_table "game_scores", :force => true do |t|
     t.integer  "game_id"
-    t.integer  "max_score"
     t.integer  "ranking"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "best_score_1", :default => 0
+    t.integer  "best_score_2", :default => 0
+    t.integer  "best_score_3", :default => 0
   end
 
   add_index "game_scores", ["user_id"], :name => "index_game_scores_on_user_id"
@@ -54,10 +64,17 @@ ActiveRecord::Schema.define(:version => 20130407043842) do
 
   add_index "notifications", ["user_id"], :name => "index_notifications_on_user_id"
 
+  create_table "recommended_games", :force => true do |t|
+    t.text     "game_icon_url"
+    t.text     "game_link_url"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "hashed_password"
-    t.text     "profile_photo"
+    t.string   "profile_photo"
     t.string   "wishlist"
     t.boolean  "android_or_iphone"
     t.string   "country"
